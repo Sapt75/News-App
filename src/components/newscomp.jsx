@@ -14,7 +14,7 @@ function Component({ category }) {
     const apiKey = "91d0d4a7e7a647bb8419d103c3a75d95"
 
     async function fetchData(pageNo) {
-        let data = await fetch(`https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}&category=${category}&page=${pageNo}&pageSize=6`)
+        let data = await fetch(`https://news-app-be.vercel.app/news/${category}/${pageNo}`)
         let json = await data.json()
         setLoading(false)
         setItem(json.articles)
@@ -31,7 +31,7 @@ function Component({ category }) {
 
     async function fetchMoreData() {
         chngePage(page + 1)
-        let data = await fetch(`https://newsapi.org/v2/top-headlines?country=in&apiKey=${apiKey}&category=${category}&page=${page + 1}&pageSize=6`)
+        let data = await fetch(`https://news-app-be.vercel.app/news/${category}/${page+1}`)
         let json = await data.json()
         setItem((preValues) => [...preValues].concat(json.articles))
     }
@@ -42,7 +42,7 @@ function Component({ category }) {
     return (
         <div className="mx-10 mt-16">
             <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate text-center mt-4 mb-6">NewsMonkey - Top {category[0].toUpperCase() + category.slice(1, category.length)} Headlines</h1>
-            {loading && item ? <Spinner /> : null}
+            {loading ? <Spinner /> : null}
            <InfiniteScroll
                 dataLength={item.length}
                 next={fetchMoreData}
