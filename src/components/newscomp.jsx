@@ -11,7 +11,6 @@ function Component({ category }) {
     const [page, chngePage] = React.useState(1)
     const [loading, setLoading] = React.useState(true)
     const [totalResults, setTotalResults] = React.useState(0)
-    const apiKey = "91d0d4a7e7a647bb8419d103c3a75d95"
 
     async function fetchData(pageNo) {
         let data = await fetch(`https://news-app-be.vercel.app/news/${category}/${pageNo}`)
