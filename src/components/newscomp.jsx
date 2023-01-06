@@ -42,8 +42,8 @@ function Component({ category }) {
     return (
         <div className="mx-10 mt-16">
             <h1 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate text-center mt-4 mb-6">NewsMonkey - Top {category[0].toUpperCase() + category.slice(1, category.length)} Headlines</h1>
-            {loading ? <Spinner /> : null}
-            {item.length !=undefined ? <InfiniteScroll
+            {loading && item ? <Spinner /> : null}
+           <InfiniteScroll
                 dataLength={item.length}
                 next={fetchMoreData}
                 hasMore={item.length !== totalResults}
@@ -58,7 +58,7 @@ function Component({ category }) {
                         }
                     }) : null}
                 </div>
-            </InfiniteScroll> : <h1>Loading</h1>}
+            </InfiniteScroll>
 
 
         </div>
