@@ -12,7 +12,7 @@ function NewsItem(props) {
             <div className="flex justify-center">
                 <div className="rounded-lg shadow-lg bg-white max-w-sm">
                     <a href={`/${props.url}`}>
-                        <img className="rounded-t-lg" width={"auto"} height={"auto"} src={props.img} alt="" />
+                        <img className="rounded-t-lg" src={props.img} alt="" />
                     </a>
                     <div className="p-6">
                         <h5 className="text-gray-900 text-xl font-medium mb-2">{props.title}</h5>
